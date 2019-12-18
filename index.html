@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+    <head>
+        <title>CIV4 RI event log</title>
+        <link rel="stylesheet" type="text/css" href="client.css" />
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="jquery-3.4.1.js"></script>
+        <script src="jquery.color-animation-1.js"></script>
+        <script>
+            var blinkColor = function(e, fgColor, bgColor, repeat) {
+				var doneClass = 'blink-done';
+				var e = e.not('.'+doneClass);
+                var bg = e.css('background-color');
+                var fg = e.css('color');
+				var i = 0;
+				while (i < repeat) {
+					i++;
+					e.animate({ backgroundColor: bgColor, color: fgColor }).animate({ backgroundColor: bg, color: fg });
+				}
+				e.addClass(doneClass);
+            };
+            var blinkOppositeColors = function(selector, repeat) {
+				var e = $(selector);
+                var bgColor = e.css('background-color');
+                var fgColor = e.css('color');
+                blinkColor(e, bgColor, fgColor, repeat);
+            };
+            $(function () {
+                var socket = io();
+                var sizes = [];
+                socket.on('message', function(msg){
+                	if (!sizes.includes(msg.size)) {
+                		sizes.push(msg.size);
+						$('#messages').append(msg.lines.join("\n"));
+                        $('html, body').animate({scrollTop: $(document).height()}, 1000);
+						blinkOppositeColors('.grows', 1);
+					}
+                	while (sizes.length > 10) sizes.shift()
+                });
+            });
+        </script>
+    </head>
+<body>
+<div id="messages"></div>
+</body>
+</html>
