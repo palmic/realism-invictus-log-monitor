@@ -2,15 +2,16 @@ Civilization IV Realism Invictus Log live monitor
 --------------------------------------------------------------------------------
 
 TROUBLESHOOTING:
- * log file needs to exist before starting this app, it will crash otherwise, so in this case start Civ, end first turn and run it again.
+ * log file needs to exist before starting this app, it will crash otherwise.
+So in this case start Civ, follow steps 2 and 3 here below, and run this app again.
 
-1. unpack this directory into C:\Users\yourUsername\Documents\My Games\beyond the sword\Logs\ as special subdirectory
+1. unpack this package into C:\Users\yourUsername\Documents\My Games\beyond the sword\Logs\ as special subdirectory
 1.1. (most probably as ....Logs\realism-invictus-log-monitor)
-1.2. it doesn't matter how is the subdir named, you can rename it as you want, but it has to be subdir of logs
+1.2. it doesn't matter how the subdir is named, you can rename it as you want, but it has to be subdir of logs
 
 2. go to Interface options in Civ, then to tab "Log" and check the Format Style is set to "HTML Tags"
-2.1. this monitor is using this because HTML uses formatting to differ particular messages
-2.2. it doesn't matter how is the html log file named once its single html file in the Logs directory
+2.1. this monitor is using this because HTML uses formatting to separate particular message types
+2.2. it doesn't matter how is the HTML log file named as far as it is a single html file in the Logs directory
 
 3. start civ
 3.1. check Interface Options > Logs if you are logging into html
@@ -18,10 +19,10 @@ TROUBLESHOOTING:
 
 4. install https://nodejs.org/
 
-5. open windows cmd terminal in Logs\realism-invictus-log-monitor directory
+5. open windows command terminal, go to Your Logs\realism-invictus-log-monitor directory
 5.1. call: npm install
 5.1. call: npm run start
 
-6. open http://localhost:3000/ in your browser (tested on chrome, but at least ff should work perfectly too)
-6.1. this log will now be updating all log messages realtime
+6. open http://localhost:3000/ in your browser (tested on Chrome, but at least Firefox should work perfectly too)
+6.1. this log will now be updating all log messages automatically in real-time
 6.2. use public/client.css for any output reformatting you want
